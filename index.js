@@ -1,6 +1,7 @@
 const express = require('express')
+const dotenv = require('dotenv');
 const app = express()
-const port = 5000;
+dotenv.config({ path: "./db/.env" })
 const cors = require("cors")
 require("./db/dbconnection")
 const Article = require("./models/Articles")
@@ -118,6 +119,6 @@ app.delete("/del/:id", async (req, resp) => {
 
 })
 
-app.listen(port, () => {
-    console.log(`server running on ${port} port`);
+app.listen(process.env.PORT, () => {
+    console.log("App is running");
 })
